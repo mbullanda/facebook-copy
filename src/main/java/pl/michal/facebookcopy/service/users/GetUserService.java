@@ -9,7 +9,7 @@ import java.util.NoSuchElementException;
 
 @Service
 @AllArgsConstructor
-public class UserService {
+public class GetUserService {
 
     private final UserRepository userRepository;
 
