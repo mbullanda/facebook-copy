@@ -1,4 +1,4 @@
-package pl.michal.facebookcopy.web.rest.dto;
+package pl.michal.facebookcopy.web.rest.dto.posts;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
