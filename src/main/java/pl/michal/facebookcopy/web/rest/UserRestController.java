@@ -3,6 +3,7 @@ package pl.michal.facebookcopy.web.rest;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import pl.michal.facebookcopy.service.users.ActivateUserService;
 import pl.michal.facebookcopy.service.users.CreateUserService;
 import pl.michal.facebookcopy.service.users.GetUserService;
 import pl.michal.facebookcopy.web.rest.dto.users.CreateUserRequest;
@@ -21,6 +22,7 @@ public class UserRestController {
 
     private final CreateUserService createUserService;
     private final GetUserService getUserService;
+    private final ActivateUserService activateUserService;
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
@@ -38,5 +40,11 @@ public class UserRestController {
     @ResponseStatus(HttpStatus.OK)
     public GetAllUsersResponse getAllUsers(){
         return getUserService.getAll();
+    }
+
+    @PutMapping("/activate/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void activateUser(@PathVariable Long id){
+        activateUserService.activateById(id);
     }
 }
