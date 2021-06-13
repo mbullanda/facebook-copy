@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import pl.michal.facebookcopy.model.User;
 
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 
 @Data
@@ -17,5 +18,6 @@ public class CreatePostRequest {
 
     private String imagePath;
 
+    @Min(value = 1, message = "User id must be greater than 0")
     private long userId;
 }

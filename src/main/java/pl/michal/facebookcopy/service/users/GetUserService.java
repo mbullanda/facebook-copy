@@ -22,10 +22,6 @@ public class GetUserService {
         return getUserConverter.toDto(userRepository.findById(id).orElseThrow(NoSuchElementException::new));
     }
 
-    public User getUserEntityById(Long id){
-        return userRepository.findById(id).orElseThrow(NoSuchElementException::new);
-    }
-
     public GetAllUsersResponse getAll(){
         return GetAllUsersResponse.builder()
                 .users(userRepository.findAll().stream()

@@ -5,10 +5,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import pl.michal.facebookcopy.service.posts.CreatePostService;
 import pl.michal.facebookcopy.service.posts.GetPostService;
-import pl.michal.facebookcopy.web.rest.dto.posts.CreatePostRequest;
-import pl.michal.facebookcopy.web.rest.dto.posts.CreatePostResponse;
-import pl.michal.facebookcopy.web.rest.dto.posts.GetAllPostsResponse;
-import pl.michal.facebookcopy.web.rest.dto.posts.GetPostResponse;
+import pl.michal.facebookcopy.service.posts.UpdatePostService;
+import pl.michal.facebookcopy.web.rest.dto.posts.*;
 
 import javax.transaction.Transactional;
 import javax.validation.Valid;
@@ -21,6 +19,7 @@ public class PostRestController {
 
     private final CreatePostService createPostService;
     private final GetPostService getPostService;
+    private final UpdatePostService updatePostService;
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
@@ -38,5 +37,11 @@ public class PostRestController {
     @ResponseStatus(HttpStatus.OK)
     public GetAllPostsResponse getAllPosts(){
         return getPostService.getAll();
+    }
+
+    @PutMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public UpdatePostResponse updatePost(@PathVariable Long id, @RequestBody @Valid UpdatePostRequest request){
+        return updatePostService.updatePost(id, request);
     }
 }
