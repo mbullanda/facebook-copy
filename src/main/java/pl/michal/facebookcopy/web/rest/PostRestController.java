@@ -7,7 +7,7 @@ import pl.michal.facebookcopy.service.posts.CreatePostService;
 import pl.michal.facebookcopy.service.posts.GetPostService;
 import pl.michal.facebookcopy.web.rest.dto.posts.CreatePostRequest;
 import pl.michal.facebookcopy.web.rest.dto.posts.CreatePostResponse;
-import pl.michal.facebookcopy.web.rest.dto.posts.GetAllPostResponse;
+import pl.michal.facebookcopy.web.rest.dto.posts.GetAllPostsResponse;
 import pl.michal.facebookcopy.web.rest.dto.posts.GetPostResponse;
 
 import javax.transaction.Transactional;
@@ -36,7 +36,7 @@ public class PostRestController {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public GetAllPostResponse getAllPosts(){
+    public GetAllPostsResponse getAllPosts(){
         return getPostService.getAll();
     }
 }

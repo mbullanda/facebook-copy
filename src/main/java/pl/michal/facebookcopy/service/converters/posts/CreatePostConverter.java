@@ -11,11 +11,11 @@ public class CreatePostConverter implements Convertable<CreatePostRequest, Post,
 
     @Override
     public Post fromDto(CreatePostRequest input) {
-        Post entity = Post.builder()
+        Post post = Post.builder()
                 .text(input.getText())
                 .imagePath(input.getImagePath())
                 .build();
-        return entity;
+        return post;
     }
 
     @Override

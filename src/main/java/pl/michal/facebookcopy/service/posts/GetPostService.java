@@ -2,10 +2,9 @@ package pl.michal.facebookcopy.service.posts;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-import pl.michal.facebookcopy.model.Post;
 import pl.michal.facebookcopy.repository.PostRepository;
 import pl.michal.facebookcopy.service.converters.posts.GetPostConverter;
-import pl.michal.facebookcopy.web.rest.dto.posts.GetAllPostResponse;
+import pl.michal.facebookcopy.web.rest.dto.posts.GetAllPostsResponse;
 import pl.michal.facebookcopy.web.rest.dto.posts.GetPostResponse;
 
 import java.util.NoSuchElementException;
@@ -22,8 +21,8 @@ public class GetPostService {
         return getPostConverter.toDto(postRepository.findById(postId).orElseThrow(NoSuchElementException::new));
     }
 
-    public GetAllPostResponse getAll() {
-        return GetAllPostResponse.builder()
+    public GetAllPostsResponse getAll() {
+        return GetAllPostsResponse.builder()
                 .posts(postRepository.findAll().stream()
                     .map(getPostConverter::toDto)
                         .collect(Collectors.toList())

@@ -7,6 +7,6 @@ import java.util.List;
 
 @Builder
 @Data
-public class GetAllPostResponse {
+public class GetAllPostsResponse {
     private List<GetPostResponse> posts;
 }
