@@ -1,13 +1,13 @@
-package pl.michal.facebookcopy.service.converters.posts;
+package pl.michal.facebookcopy.service.mappers.posts;
 
 import org.springframework.stereotype.Service;
 import pl.michal.facebookcopy.model.Post;
-import pl.michal.facebookcopy.service.converters.Convertable;
+import pl.michal.facebookcopy.service.mappers.Convertable;
 import pl.michal.facebookcopy.web.rest.dto.posts.CreatePostRequest;
 import pl.michal.facebookcopy.web.rest.dto.posts.CreatePostResponse;
 
 @Service
-public class CreatePostConverter implements Convertable<CreatePostRequest, Post, CreatePostResponse> {
+public class CreatePostMapper implements Convertable<CreatePostRequest, Post, CreatePostResponse> {
 
     @Override
     public Post fromDto(CreatePostRequest input) {

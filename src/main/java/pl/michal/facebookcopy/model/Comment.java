@@ -3,6 +3,7 @@ package pl.michal.facebookcopy.model;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @Data

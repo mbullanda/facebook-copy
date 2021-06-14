@@ -1,13 +1,12 @@
-package pl.michal.facebookcopy.service.converters.users;
+package pl.michal.facebookcopy.service.mappers.users;
 
 import org.springframework.stereotype.Service;
 import pl.michal.facebookcopy.model.User;
-import pl.michal.facebookcopy.service.converters.Convertable;
-import pl.michal.facebookcopy.web.rest.dto.posts.GetPostResponse;
+import pl.michal.facebookcopy.service.mappers.Convertable;
 import pl.michal.facebookcopy.web.rest.dto.users.GetUserResponse;
 
 @Service
-public class GetUserConverter implements Convertable<Void, User, GetUserResponse> {
+public class GetUserMapper implements Convertable<Void, User, GetUserResponse> {
 
     @Override
     public User fromDto(Void input) {

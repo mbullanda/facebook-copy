@@ -1,4 +1,4 @@
-package pl.michal.facebookcopy.service.converters;
+package pl.michal.facebookcopy.service.mappers;
 
 public interface Convertable<DOT_INPUT_TYPE, ENTITY, DTO_OUTPUT_TYPE> {
 
