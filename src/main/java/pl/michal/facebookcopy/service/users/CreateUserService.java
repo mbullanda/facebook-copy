@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.michal.facebookcopy.model.User;
 import pl.michal.facebookcopy.repository.UserRepository;
-import pl.michal.facebookcopy.service.converters.users.CreateUserConverter;
+import pl.michal.facebookcopy.service.mappers.users.CreateUserMapper;
 import pl.michal.facebookcopy.web.rest.dto.users.CreateUserRequest;
 import pl.michal.facebookcopy.web.rest.dto.users.CreateUserResponse;
 
@@ -13,10 +13,10 @@ import pl.michal.facebookcopy.web.rest.dto.users.CreateUserResponse;
 public class CreateUserService {
 
     private final UserRepository userRepository;
-    private final CreateUserConverter createUserConverter;
+    private final CreateUserMapper createUserMapper;
 
     public CreateUserResponse createUser(CreateUserRequest request){
-        User userToCreate = createUserConverter.fromDto(request);
-        return createUserConverter.toDto(userRepository.save(userToCreate));
+        User userToCreate = createUserMapper.fromDto(request);
+        return createUserMapper.toDto(userRepository.save(userToCreate));
     }
 }

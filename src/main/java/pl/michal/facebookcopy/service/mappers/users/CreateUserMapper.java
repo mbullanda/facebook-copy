@@ -1,13 +1,13 @@
-package pl.michal.facebookcopy.service.converters.users;
+package pl.michal.facebookcopy.service.mappers.users;
 
 import org.springframework.stereotype.Service;
 import pl.michal.facebookcopy.model.User;
-import pl.michal.facebookcopy.service.converters.Convertable;
+import pl.michal.facebookcopy.service.mappers.Convertable;
 import pl.michal.facebookcopy.web.rest.dto.users.CreateUserRequest;
 import pl.michal.facebookcopy.web.rest.dto.users.CreateUserResponse;
 
 @Service
-public class CreateUserConverter implements Convertable<CreateUserRequest, User, CreateUserResponse> {
+public class CreateUserMapper implements Convertable<CreateUserRequest, User, CreateUserResponse> {
 
     @Override
     public User fromDto(CreateUserRequest input) {

@@ -3,7 +3,7 @@ package pl.michal.facebookcopy.service.posts;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.michal.facebookcopy.repository.PostRepository;
-import pl.michal.facebookcopy.service.converters.posts.GetPostConverter;
+import pl.michal.facebookcopy.service.mappers.posts.GetPostMapper;
 import pl.michal.facebookcopy.web.rest.dto.posts.GetAllPostsResponse;
 import pl.michal.facebookcopy.web.rest.dto.posts.GetPostResponse;
 
@@ -15,16 +15,16 @@ import java.util.stream.Collectors;
 public class GetPostService {
 
     private final PostRepository postRepository;
-    private final GetPostConverter getPostConverter;
+    private final GetPostMapper getPostMapper;
 
     public GetPostResponse getById(Long postId){
-        return getPostConverter.toDto(postRepository.findById(postId).orElseThrow(NoSuchElementException::new));
+        return getPostMapper.toDto(postRepository.findById(postId).orElseThrow(NoSuchElementException::new));
     }
 
     public GetAllPostsResponse getAll() {
         return GetAllPostsResponse.builder()
                 .posts(postRepository.findAll().stream()
-                    .map(getPostConverter::toDto)
+                    .map(getPostMapper::toDto)
                         .collect(Collectors.toList())
                 )
                 .build();
