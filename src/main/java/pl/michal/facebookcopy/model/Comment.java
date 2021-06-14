@@ -3,16 +3,15 @@ package pl.michal.facebookcopy.model;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.Set;
 
 @Entity
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(exclude = {"user", "comments"})
-@ToString(exclude = {"user","comments"})
-public class Post {
+@EqualsAndHashCode(exclude = {"post", "user"})
+@ToString(exclude = {"post", "user"})
+public class Comment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,12 +19,9 @@ public class Post {
 
     private String text;
 
-    private String imagePath;
+    @ManyToOne
+    private Post post;
 
     @ManyToOne
     private User user;
-
-    @OneToMany(mappedBy = "post")
-    private Set<Comment> comments;
-
 }
