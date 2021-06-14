@@ -11,8 +11,8 @@ import java.util.Set;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(exclude = "posts")
-@ToString(exclude = "posts")
+@EqualsAndHashCode(exclude = {"posts", "comments"})
+@ToString(exclude = {"posts", "comments"})
 public class User {
 
     @Id
@@ -26,4 +26,7 @@ public class User {
 
     @OneToMany(mappedBy = "user")
     private Set<Post> posts = new HashSet<>();
+
+    @OneToMany(mappedBy = "user")
+    private Set<Comment> comments;
 }
