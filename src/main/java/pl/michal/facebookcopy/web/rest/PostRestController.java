@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import pl.michal.facebookcopy.service.posts.CreatePostService;
+import pl.michal.facebookcopy.service.posts.DeletePostService;
 import pl.michal.facebookcopy.service.posts.GetPostService;
 import pl.michal.facebookcopy.service.posts.UpdatePostService;
 import pl.michal.facebookcopy.web.rest.dto.posts.*;
@@ -20,6 +21,7 @@ public class PostRestController {
     private final CreatePostService createPostService;
     private final GetPostService getPostService;
     private final UpdatePostService updatePostService;
+    private final DeletePostService deletePostService;
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
@@ -43,5 +45,11 @@ public class PostRestController {
     @ResponseStatus(HttpStatus.OK)
     public UpdatePostResponse updatePost(@PathVariable Long id, @RequestBody @Valid UpdatePostRequest request){
         return updatePostService.updatePost(id, request);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deletePost(@PathVariable Long id){
+        deletePostService.deletePost(id);
     }
 }
