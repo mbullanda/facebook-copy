@@ -5,10 +5,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import pl.michal.facebookcopy.service.comments.CreateCommentService;
 import pl.michal.facebookcopy.service.comments.GetCommentService;
-import pl.michal.facebookcopy.web.rest.dto.comments.CreateCommentRequest;
-import pl.michal.facebookcopy.web.rest.dto.comments.CreateCommentResponse;
-import pl.michal.facebookcopy.web.rest.dto.comments.GetAllCommentsResponse;
-import pl.michal.facebookcopy.web.rest.dto.comments.GetCommentResponse;
+import pl.michal.facebookcopy.service.comments.UpdateCommentService;
+import pl.michal.facebookcopy.web.rest.dto.comments.*;
 
 import javax.transaction.Transactional;
 import javax.validation.Valid;
@@ -21,6 +19,7 @@ public class CommentRestController {
 
     private final CreateCommentService createCommentService;
     private final GetCommentService getCommentService;
+    private final UpdateCommentService updateCommentService;
 
     @PostMapping("/posts/{postId}/comments")
     @ResponseStatus(HttpStatus.CREATED)
@@ -38,5 +37,11 @@ public class CommentRestController {
     @ResponseStatus(HttpStatus.OK)
     public GetCommentResponse getCommentById(@PathVariable Long id){
         return getCommentService.getById(id);
+    }
+
+    @PutMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public UpdateCommentResponse updateComment(@PathVariable Long id, @RequestBody @Valid UpdateCommentRequest request){
+        return updateCommentService.updateComment(id,request);
     }
 }
